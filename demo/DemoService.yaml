@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend
+  namespace: demo
+spec:
+  selector:
+    role: backend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

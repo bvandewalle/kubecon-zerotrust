@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: external
+  namespace: demo
+  labels:
+    role: external
+spec:
+  containers:
+      - name: client
+        image: bvandewa/kubecon17eu-client
+        env:
+        - name: BACKEND
+          value: "backend"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend
+  namespace: demo
+  labels:
+    role: frontend
+spec:
+  containers:
+      - name: client
+        image: bvandewa/kubecon17eu-client
+        env:
+        - name: BACKEND
+          value: "backend"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend
+  namespace: demo
+  labels:
+    role: backend
+spec:
+  containers:
+    - name: server
+      image: bvandewa/kubecon17eu-server
+      ports:
+        - containerPort: 80
